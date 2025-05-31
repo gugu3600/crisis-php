@@ -1,0 +1,86 @@
+@import "./node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    
+    * {
+        @apply box-border;
+    }
+
+    body{
+        @apply h-screen text-black bg-white m-0 p-0 text-base;
+    }
+
+    h1 {
+        font-size: 80px;
+    }
+    
+    h2 {
+        font-size: 65px;
+    }
+    
+    h3 {
+        font-size: 59px;
+    }
+    
+    h4 {
+        font-size: 35px;
+    }
+    
+    h5 {
+        font-size: 24px;
+    }
+    
+    h6 {
+        font-size: 18px;
+    }
+}
+
+@layer components{
+
+    .container{
+        @apply max-w-custom  mx-auto;
+    }
+
+    .card{
+
+        @apply md:w-full lg:w-1/4 p-12 border text-center flex-grow;
+    }
+
+    .btn{
+        @apply w-20 h-10 rounded-md font-bold inline-block text-center leading-10 rounded-lg text-nowrap transition-all duration-300;
+    }
+
+    .modal{
+
+        @apply w-full h-full m-auto bg-black bg-opacity-20 flex justify-center;
+    }
+
+    .modal-dialog{
+
+        @apply mt-20 p-10 h-5/6 bg-orange-600 text-center rounded-lg;
+    }
+
+    .modal-dialog h2{
+       @apply text-white my-2 font-bold text-4xl;
+    }
+
+    .form-group{
+
+        @apply my-10;
+    }
+
+    .form-group>label{
+
+        @apply text-white block mb-3 text-2xl;
+    }
+
+    .form-control[type=text],.form-control[type=email],.form-control[type=password]{
+
+        @apply  w-full h-7 px-5 py-3 box-border text-white bg-orange-600 border-b-2 border-blue-400 text-2xl focus:outline-none focus:bg-orange-600 focus:border-blue-700 focus:scale-105 transition-all duration-200;
+    }
+    
+}

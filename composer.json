@@ -1,0 +1,16 @@
+{
+    "name": "h2z/crisis-app",
+    "autoload": {
+        "psr-4": {
+            "Database\\": "Database/",
+            "App\\" : "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "gugu36",
+            "email": "jukonzai@gmail.com"
+        }
+    ],
+    "require": {}
+}
