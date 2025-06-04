@@ -6860,14 +6860,6 @@ h6 {
   margin-inline-start:0.75rem
 }
 
-.me-5{
-  margin-inline-end:1.25rem
-}
-
-.block{
-  display:block
-}
-
 .flex{
   display:flex
 }
@@ -6927,6 +6919,16 @@ h6 {
   background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))
 }
 
+.bg-red-500{
+  --tw-bg-opacity:1;
+  background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))
+}
+
+.bg-red-700{
+  --tw-bg-opacity:1;
+  background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))
+}
+
 .py-3{
   padding-top:0.75rem;
   padding-bottom:0.75rem
@@ -6935,16 +6937,6 @@ h6 {
 .text-3xl{
   font-size:1.875rem;
   line-height:2.25rem
-}
-
-.text-lg{
-  font-size:1.125rem;
-  line-height:1.75rem
-}
-
-.text-2xl{
-  font-size:1.5rem;
-  line-height:2rem
 }
 
 .text-xl{
@@ -7006,6 +6998,11 @@ h6 {
 .hover\:bg-red-300:hover{
   --tw-bg-opacity:1;
   background-color:rgb(252 165 165 / var(--tw-bg-opacity, 1))
+}
+
+.hover\:bg-red-500:hover{
+  --tw-bg-opacity:1;
+  background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))
 }
 
 .hover\:text-black:hover{

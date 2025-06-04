@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\Model;
+// use App\Http\Requests\Request;
 
 class Controller
 {
@@ -11,6 +12,8 @@ class Controller
 
     public function __construct()
     {
+        // new Request();
         return new Model();
     }
+
 }

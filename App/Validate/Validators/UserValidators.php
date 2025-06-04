@@ -8,7 +8,6 @@ class UserValidators extends Validator
 {
     private static $validator = null;
     private $parent;
-
     public function __construct(Validator $parent)
     {
         
@@ -29,7 +28,6 @@ class UserValidators extends Validator
 
     public static function validate($data)
     {
-        
         if(static::$validator == null){
             static::$validator = new UserValidators(new Validator($data));
         }

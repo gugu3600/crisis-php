@@ -1,19 +1,8 @@
-const login = document.getElementById("login"),
-    signup = document.getElementById("signup"),
-    btn_login = document.getElementById("btn-login"),
-    btn_signup = document.getElementById("btn-signup"),
-    modal_login = document.getElementById("modal-sign-in"),
+const modal_login = document.getElementById("modal-sign-in"),
     modal_signup = document.getElementById("modal-sign-up"),
-    password = document.getElementById("password"),
-    confirm_password = document.getElementById('confirm-password'),
-    login_password = document.getElementById('login-password'),
     signup_eye = document.getElementById('eye'),
     confirm_eye = document.getElementById("confirm-eye"),
     login_eye = document.getElementById("login-eye");
-
-// console.log(login,signup,modal_login,modal_signup,password,confirm_password,login_password,signup_eye,confirm_eye,login_eye);
-
-
 
 function showSignin() {
 
@@ -21,30 +10,96 @@ function showSignin() {
 
     if (modal_login.classList.contains("hidden")) modal_login.classList.replace("hidden", "flex");
 
-    if (modal_signup.classList.contains("flex")) modal_signup.classList.replace("flex","hidden");
+    if (modal_signup.classList.contains("flex")) modal_signup.classList.replace("flex", "hidden");
 
     modal_signup.classList.add("hidden");
     modal_login.classList.add("flex");
     modal_login.classList.remove("hidden");
-    }
+}
 
-    function showSignup() {
+function showSignup() {
 
     if (modal_signup.classList.contains("hidden")) modal_signup.classList.replace("hidden", "flex");
 
-    if (modal_login.classList.contains("flex")) modal_login.classList.replace("flex","hidden");
+    if (modal_login.classList.contains("flex")) modal_login.classList.replace("flex", "hidden");
 
     modal_login.classList.add("hidden");
     modal_signup.classList.remove("hidden");
     modal_signup.classList.add("flex");
 
+}
+
+function cancel() {
+
+    modal_login.classList.contains("flex") ? modal_login.classList.replace("flex", "hidden") : modal_login.classList.add("hidden");
+
+    modal_signup.classList.contains("flex") ? modal_signup.classList.replace("flex", "hidden") : modal_signup.classList.add("hidden");
+}
+
+let show_pw = false;
+
+signup_eye.addEventListener("click", function () {
+
+    // show_pw = true;
+    if (!show_pw) {
+        this.firstChild.classList.replace("fa-eye", "fa-eye-slash");
+        this.previousElementSibling.type = "text";
+        show_pw = true;
+    } else {
+
+        this.firstChild.classList.replace("fa-eye-slash", "fa-eye");
+        this.previousElementSibling.type = "password";
+        show_pw = false;
     }
+});
 
-    function cancel(){
 
-        modal_login.classList.contains("flex") ? modal_login.classList.replace("flex","hidden") : modal_login.classList.add("hidden");
+show_confirm = false;
 
-        modal_signup.classList.contains("flex") ? modal_signup.classList.replace("flex","hidden") : modal_signup.classList.add("hidden");
+
+confirm_eye.addEventListener("click", function () {
+
+    // show_pw = true;
+    if (!show_confirm) {
+        this.firstChild.classList.replace("fa-eye", "fa-eye-slash");
+        this.previousElementSibling.type = "text";
+        show_confirm = true;
+    } else {
+        this.firstChild.classList.replace("fa-eye-slash", "fa-eye");
+        this.previousElementSibling.type = "password";
+        show_confirm = false;
     }
+});
+
+login_pw = false;
 
 
+login_eye.addEventListener("click", function () {
+
+    // show_pw = true;
+    if (!login_pw) {
+        this.firstChild.classList.replace("fa-eye", "fa-eye-slash");
+        this.previousElementSibling.type = "text";
+        login_pw = true;
+    } else {
+
+        this.firstChild.classList.replace("fa-eye-slash", "fa-eye");
+        this.previousElementSibling.type = "password";
+        login_pw = false;
+    }
+});
+
+
+const guest = document.getElementById("guest"),
+      guest_form = document.getElementById("guest-form");
+
+      console.log(guest,guest_form);
+      
+      guest.addEventListener("click",function(){
+
+
+         modal_signup.classList.add("hidden");
+        modal_login.classList.add("hidden");
+        guest_form.classList.replace("hidden","add");
+        // guest_form.classList.remove("hidden");
+      });

@@ -13,6 +13,7 @@ class Route
         if ($query) $url .= $query;
 
         return header("location:$url");
+        // exit();
     }
 
 }

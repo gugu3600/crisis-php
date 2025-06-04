@@ -32,7 +32,7 @@ class Users extends Model
         }
     }
 
-    public static function signup($data)
+    public static function create($data)
     {
         try{
 
@@ -42,6 +42,39 @@ class Users extends Model
             $stmt->execute($data);
 
             return static::$db->lastInsertId();
+        }
+
+        catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
+
+    public static function find($id)
+    {
+        try{
+            $query = "SELECT * FROM users WHERE id = :id";
+
+            $stmt = static::$db->prepare($query);
+            $stmt->execute(["id" => $id]);
+            return $stmt->fetch();
+        }
+
+        catch(PDOException $e){
+            return $e->getMessage();
+        }
+    }
+
+    public static function auth($username,$password)
+    {
+        try{
+            $query = "SELECT * FROM users WHERE username = :username And password = :password";
+
+            $stmt = static::$db->prepare($query);
+            $stmt->execute([
+                "username" => $username,
+                "password" => $password
+            ]);
+            return $stmt->fetch();
         }
 
         catch(PDOException $e){
