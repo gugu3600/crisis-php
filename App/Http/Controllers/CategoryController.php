@@ -6,6 +6,7 @@ include "../../../vendor/autoload.php";
 
 use Database\DB\MySQL;
 use App\Http\Models\Category;
+use App\Http\Models\Regions;
 
 class CategoryController extends Controller 
 {
@@ -16,8 +17,13 @@ class CategoryController extends Controller
         return $categories;
     }
 
-    public function store()
+    public function store($data)
     {
         
     }
+
+        
+    
+
+    
 }

@@ -82,5 +82,4 @@
 
         @apply  w-full h-7 px-5 py-3 box-border text-white bg-orange-600 border-b-2 border-blue-400 text-2xl focus:outline-none focus:bg-orange-600 focus:border-blue-700 focus:scale-105 transition-all duration-200;
     }
-    
 }
