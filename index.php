@@ -1,12 +1,13 @@
 <?php
 
-include "vendor/autoload.php";
+include_once "vendor/autoload.php";
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegionsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Requests\Request;
 use App\Http\Helpers\Auth\Auth;
+
 $rc = new RegionsController();
 $categoryController = new CategoryController();
 // print_r(Regions::all());
@@ -17,7 +18,8 @@ $categories = $categoryController->index();
 $auth = Auth::check();
 $data = new UsersController();
 
-print_r($auth);
+
+// print_r($auth);
 // $user = $data->store();
 // $request = new Request();
 // print_r($user);
@@ -40,7 +42,7 @@ print_r($auth);
         <nav class="container flex py-3  items-center justify-around gap-5">
             <ul class="flex gap-5 text-xl">
                 <li><a href="">Home</a></li>
-                <li><a href="">Map</a></li>
+                <li><a href="Resources/Views/Chat/Worldchat.php">Chat</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Donations</a></li>
                 <li><a href="">Map</a></li>
@@ -48,12 +50,27 @@ print_r($auth);
             </ul>
 
             <h1 class="text-3xl font-bold"><a href="/index.php">Heal The World</a></h1>
-            <div <?php if($auth) : ?> class="hidden" <?php endif ?>  class="btn-group" ?>
+            <div <?php if ($auth) : ?> class="hidden" <?php endif ?> class="btn-group" ?>
                 <button class="btn bg-blue-300 hover:bg-blue-600 hover:text-white" id="signup" onclick="showSignup()">Sign Up</button>
                 <button class="btn bg-green-500 ms-3 hover:bg-green-600 hover:text-white transition" id="login" onclick="showSignin()">Log In</button>
             </div>
 
-            <?php if ($auth) : ?> <a href="App/Http/Helpers/Auth/Logout.php" class="btn bg-red-700 hover:bg-red-500 text-white ">Log Out</a> <?php endif ?>
+            <?php if ($auth) : ?> <a href="App/Http/Helpers/Auth/Logout.php" class="btn bg-red-700 hover:bg-red-500 text-white ">Log Out</a>
+
+                <div class="setting relative text-center">
+                    <button class="text-2xl"><i class="fas fa-cog"></i></button>
+                    <ul class="list-none bg-red-500 text-white p-4 *:my-4 absolute w-auto *:text-nowrap top-6 -left-14 text-center hidden setting-item">
+                        <li><a href="Resources/Views/Setting/profileSetting.php">Change Username <i class="fas fa-user"></i></a></li>
+                        <li><a href="Resources/Views/Setting/username.php">Change Email <i class="fas fa-at"></i></a></li>
+                        <li><a href="Resources/Views/Setting/username.php">Change Password </a><i class="fas fa-key"></i></li>
+                        <li><a href="Resources/Views/Setting/username.php">Change Location </a><i class="fas fa-location-arrow"></i></li>
+                        <li>Change Theme <i class="fas fa-moon cursor-pointer"></i></li>
+                    </ul>
+                </div>
+
+            <?php endif ?>
+
+
         </nav>
     </header>
     <div class="container">
@@ -103,7 +120,7 @@ print_r($auth);
 
                 <div class="form-group">
                     <label for="region">Enter Your Regions</label>
-                    <select name="reigon_id" class="form-select" id="region">
+                    <select name="region_id" class="form-select" id="region">
                         <option value="" selected disabled>Choose Your Regions</option>
                         <?php foreach ($regions as $region) : ?>
                             <option value="<?= $region->id ?>"><?= $region->name ?></option>

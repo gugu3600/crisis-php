@@ -4,9 +4,10 @@ include "../../../vendor/autoload.php";
 use App\Http\Controllers\GuestController;
 
 $time = time();
-$name = "Guest" .$time;
-$email = null;
-$password = null; 
+
+$name = "Guest".$time;
+$email = $name."@gmail.com";
+$password = md5("password"); 
 $region_id = $_POST["region_id"];
 $role_id = 3;
 

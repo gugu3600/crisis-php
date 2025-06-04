@@ -40,3 +40,5 @@ print_r( $abc->getData());
 $bcd = new Cat();
 
 print_r($bcd->output());
+
+echo time();

@@ -1,7 +1,8 @@
-<?php 
+<?php
 
 
 namespace App\Http\Models;
+
 include "../../vendor/autoload.php";
 
 use Database\DB\MySQL;
@@ -18,15 +19,13 @@ class Users extends Model
 
     public static function all()
     {
-        try{
+        try {
             $query = "SELECT * FROM users";
 
             $stmt = static::$db->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll();
-        }
-
-        catch (PDOException $e){
+        } catch (PDOException $e) {
 
             return $e->getMessage();
         }
@@ -34,7 +33,7 @@ class Users extends Model
 
     public static function create($data)
     {
-        try{
+        try {
 
             $query = "INSERT INTO users (username,email,password,role_id,region_id,created_at,updated_at) VALUES (:username,:email,:password,:role_id,:region_id,NOW(),NOW()) ";
 
@@ -42,31 +41,27 @@ class Users extends Model
             $stmt->execute($data);
 
             return static::$db->lastInsertId();
-        }
-
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             return $e->getMessage();
         }
     }
 
     public static function find($id)
     {
-        try{
+        try {
             $query = "SELECT * FROM users WHERE id = :id";
 
             $stmt = static::$db->prepare($query);
             $stmt->execute(["id" => $id]);
             return $stmt->fetch();
-        }
-
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             return $e->getMessage();
         }
     }
 
-    public static function auth($username,$password)
+    public static function auth($username, $password)
     {
-        try{
+        try {
             $query = "SELECT * FROM users WHERE username = :username And password = :password";
 
             $stmt = static::$db->prepare($query);
@@ -75,10 +70,25 @@ class Users extends Model
                 "password" => $password
             ]);
             return $stmt->fetch();
-        }
-
-        catch(PDOException $e){
+        } catch (PDOException $e) {
             return $e->getMessage();
         }
     }
+
+    public static function update($data)
+    {
+        try {
+
+            $query = "UPDATE users SET username = :username, email = :email, region_id = :region_id, report_count = :report_count ,updated_at = NOW() WHERE id = :id";
+            $stmt = static::$db->prepare($query);
+            $stmt->execute($data);
+
+            return $stmt->rowCount();
+        } catch (PDOException $e) {
+
+            return $e->getMessage();
+        }
+    }
+
+    
 }

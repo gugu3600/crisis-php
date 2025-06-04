@@ -16,4 +16,9 @@ class Model
         return static::$db;
         // echo static::$db;
     }
+
+    // public function belongsTo()
+    // {
+
+    // }
 }

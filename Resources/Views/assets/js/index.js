@@ -91,15 +91,53 @@ login_eye.addEventListener("click", function () {
 
 
 const guest = document.getElementById("guest"),
-      guest_form = document.getElementById("guest-form");
+    guest_form = document.getElementById("guest-form");
 
-      console.log(guest,guest_form);
-      
-      guest.addEventListener("click",function(){
+console.log(guest, guest_form);
+
+guest.addEventListener("click", function () {
 
 
-         modal_signup.classList.add("hidden");
-        modal_login.classList.add("hidden");
-        guest_form.classList.replace("hidden","add");
-        // guest_form.classList.remove("hidden");
-      });
+    modal_signup.classList.add("hidden");
+    modal_login.classList.add("hidden");
+    guest_form.classList.replace("hidden", "add");
+    // guest_form.classList.remove("hidden");
+});
+
+const setting = document.querySelector(".fa-cog"),
+    settingItem = document.querySelector(".setting-item");
+
+    let dropdown = false;
+    let change = false;
+
+    setting.addEventListener("click",function(){
+
+        if(!dropdown){
+            settingItem.classList.replace("hidden","block");
+            dropdown =true;
+        }
+        else{
+
+            settingItem.classList.replace("block","hidden");
+            dropdown = false;
+        }
+        
+    });
+
+    const moon = document.querySelector(".cursor-pointer");
+
+    moon.addEventListener("click",function(){
+
+        if(!change){
+
+            document.body.style.backgroundColor = "#000";
+            moon.classList.replace("fa-moon","fa-sun");
+            change = true;
+
+        }else{
+
+            document.body.style.backgroundColor = "#fff";
+            moon.classList.replace("fa-sun","fa-moon");
+            change = false;
+        }
+    });

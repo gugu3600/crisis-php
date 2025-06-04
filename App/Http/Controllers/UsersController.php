@@ -15,17 +15,6 @@ use App\Validate\Validators\UserValidators;
 class UsersController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     $data = [
-    //         "name" => $request->name(),
-    //         "email" => $request->email(),
-    //         "password" => $request->password(),
-    //         "role_id" => $request->role_id(),
-    //         "region_id" => $request->region_id()
-    //     ];
-    // }
     public function index()
     {
         $users = Users::all();
@@ -34,23 +23,9 @@ class UsersController extends Controller
 
     public function store($data)
     {
-        // $data = [
-        //     "username" => $_POST['username'],
-        //     "email" => $_POST['email'],
-        //     "password" => md5($_POST['password']),
-        //     "role_id" => $_POST['role_id'],
-        //     "region_id" => $_POST['region_id'],
-        // ];
         $request = UserValidators::class;
         
-        // $data = [
-        //     "username" => '44',
-        //     "email" => 'abc@gmail.com',
-        //     "password" => 'kglay',
-        //     "role_id" => "5",
-        //     "region_id" => 5,
-        // ];
-
+      
         $datas = $request::validate($data);
 
         if ($datas->successful() === true || $datas->successful() == 1) {
@@ -61,14 +36,27 @@ class UsersController extends Controller
         // echo "no";
     }
 
+    public function edit($id)
+    {
+        $user = Users::find($id);
+        return $user;
+    }
+
+    public function update($data)
+    {
+        Users::update($data);
+        return Route::redirect("index.php");
+    }
+
     public function auth($username,$password)
     {
         $user = Users::auth($username,$password);
         session_start();
         $_SESSION['user'] = $user;
 
-        Route::redirect("/index.php","success");
+        Route::redirect("/index.php");
     }
+
 
     
 }
