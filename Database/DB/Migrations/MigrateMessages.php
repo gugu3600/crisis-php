@@ -13,7 +13,6 @@ class MigrateMessages implements Migration
     {
         // $bp = Blueprint::Schema("messages");
         $this->table = $bp::Schema("messages");
-        $this->table->removeQuery();
         $this->table->id();
         $this->table->text("messages");
         $this->table->integer("user_id");
